@@ -1,0 +1,16 @@
+%% rel generated at {2016,8,10} {15,40,50}
+{release,{"nitrogen","2.3.1"},
+         {erts,"7.3"},
+         [{kernel,"4.2"},
+          {stdlib,"2.8"},
+          {sasl,"2.7"},
+          {crypto,"3.6.3"},
+          {runtime_tools,"1.9.3"},
+          {xmerl,"1.3.10"},
+          {compiler,"6.0.3"},
+          {asn1,"4.0.2"},
+          {public_key,"1.1.1"},
+          {ssl,"7.3"},
+          {common_test,"1.12"},
+          {parsetools,"2.1.1"}]}.
+
