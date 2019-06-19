@@ -21,13 +21,21 @@ body_left() ->
     ].
 
 body_right() ->
-    #panel{id=quotes}.
+    [
+        #panel{id=quotes},
+        #panel{id=favorite_holder},
+        #flash{}
+    ].
 
 event(get_quotes) ->
     Symbol = wf:q(symbol),
     wf:comet(fun() ->
         get_and_insert_quote(Symbol)
-    end).
+    end),
+    wf:update(favorite_holder, favorite_button(Symbol)).
+
+favorite_button(Symbol) ->
+    #button{postback={favorite, Symbol}}.
 
 get_and_insert_quote(Symbol) ->
     Quote = stock:lookup(Symbol),

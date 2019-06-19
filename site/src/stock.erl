@@ -1,14 +1,20 @@
 -module(stock).
 -export([lookup/1]).
 
-lookup(Symbol) ->
-    URL = "http://www.google.com/finance/info?q=NSE:" ++ Symbol,
-    {ok, {_, _, Body}} = httpc:request(URL),
-    Body2 = strip_google_prefix(Body),
-    case wf:json_decode(Body2) of
-        undefined -> undefined;
-        [Quote|_] -> proplists:get_value(<<"l">>, Quote)
-    end.
+%-define(CMC_API_KEY, "eed3c7d8-bc46-433b-83e5-028c65add01d").
+-define(AV_API_KEY, "BVJ2JHQY6MLA0WGZ").
 
-strip_google_prefix("\n//" ++ Body) -> Body;
-strip_google_prefix(Body) -> Body.
+
+lookup(Symbol) ->
+    BaseURL = "https://www.alphavantage.co/query?",
+    QS = wf:to_qs([
+        {function, "GLOBAL_QUOTE"},
+        {symbol, Symbol},
+        {apikey, ?AV_API_KEY}
+    ]),
+    URL = BaseURL ++ QS,
+
+    {ok, {_, _, Body}} = httpc:request(URL),
+    Quote = wf:json_decode(Body),
+    GlobalQuote = proplists:get_value(<<"Global Quote">>, Quote),
+    proplists:get_value(<<"05. price">>, GlobalQuote).

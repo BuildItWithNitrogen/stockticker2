@@ -9,33 +9,26 @@
   <script src='/nitrogen/livevalidation.min.js' type='text/javascript' charset='utf-8'></script>
   <script src='/nitrogen/nitrogen.min.js' type='text/javascript' charset='utf-8'></script>
   <script src='/nitrogen/bert.min.js' type='text/javascript' charset='utf-8'></script>
-  <script src='/bootstrap/js/bootstrap.min.js'></script>
+  <script src='/bootstrap/js/bootstrap.bundle.min.js'></script>
   <link rel="stylesheet" href="/nitrogen/jquery-ui/jquery.ui.all.css" type="text/css" media="screen" charset="utf-8" />
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
   <link rel="stylesheet" href="/bootstrap/css/bootstrap-theme.min.css" />
   <link rel="stylesheet" href="/nitrogen/nitrogen.css" />
   <link rel="stylesheet" href="/css/style.css" />
 </head>
-<body style="padding-top:70px">
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle"
-				data-toggle="collapse"
-				data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle Nav</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-	  		</button>
-			<a class="navbar-brand" href="/">
-				Stock Ticker
-			</a>
-		</div>
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
+<body style="padding-top: 5rem">
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" role="navigation">
+		<a class="navbar-brand" href="/">
+			Stock Ticker
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="main-menu">
 	  		[[[st_common:menu()]]]
 		</div>
 	</nav>
-	<div class=container>
+	<main role="main" class=container>
 		<div class=row>
 			<div class="col-md-offset-2 col-md-4">
 				[[[page:body_left()]]] 
@@ -44,7 +37,7 @@
 				[[[page:body_right()]]]
 			</div>
 		</div>
-	</div>
+	</main>
 </body>
 
 <script>
